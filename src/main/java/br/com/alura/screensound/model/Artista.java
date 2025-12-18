@@ -46,6 +46,7 @@ public class Artista {
         return musicas;
     }
 
+    @OneToMany
     public void setMusicas(List<Musica> musicas) {
         this.musicas = musicas;
     }
@@ -53,7 +54,7 @@ public class Artista {
     @Override
     public String toString() {
         return "Artista: '" + nome + '\'' +
-                ", Tipo: " + tipo +
-                ", Músicas: " + musicas;
+                " - Tipo: " + tipo +
+                " - Músicas: " + musicas;
     }
 }
