@@ -22,6 +22,7 @@ public class Artista {
     @OneToMany(
             mappedBy = "artista",
             cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
             orphanRemoval = true
     )
     private List<Musica> musicas = new ArrayList<>();
