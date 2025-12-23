@@ -67,7 +67,10 @@ public class Principal {
     }
 
     private void buscarMusicasPorArtista() {
-        
+        System.out.println("Buscar músicas de que artista? ");
+        var nome = leitura.nextLine();
+        List<Musica> musicas = repositorio.buscaMusicasPorArtista(nome);
+        musicas.forEach(System.out::println);
     }
 
     private void listarMusicas() {
@@ -79,6 +82,8 @@ public class Principal {
                     System.out.println("  - " + musica.getNome())
             );
         });
+
+        //artistas.forEach(a -> a.getMusicas().forEach(System.out::println); //Lista por música
     }
 
     private void cadastrarMusica() {
