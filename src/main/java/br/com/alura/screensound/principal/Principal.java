@@ -4,6 +4,7 @@ import br.com.alura.screensound.model.Artista;
 import br.com.alura.screensound.model.Musica;
 import br.com.alura.screensound.model.TipoArtista;
 import br.com.alura.screensound.repository.ArtistaRepository;
+import br.com.alura.screensound.service.ConsultaWikipedia;
 
 import java.util.List;
 import java.util.Optional;
@@ -64,6 +65,10 @@ public class Principal {
     }
 
     private void pesquisarDadosDoArtista() {
+        System.out.println("Digite o nome do artista para pesquisa: ");
+        var nome = leitura.nextLine();
+        var resposta = ConsultaWikipedia.obterInformacao(nome);
+        System.out.println(resposta.trim());
     }
 
     private void buscarMusicasPorArtista() {
