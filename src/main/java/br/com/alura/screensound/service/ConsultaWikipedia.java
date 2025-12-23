@@ -40,10 +40,26 @@ public class ConsultaWikipedia {
                 return "Resumo não disponível para este artista.";
             }
 
-            return resumo.getExtract();
+            return limitarPorFrases(resumo.getExtract(), 3);
 
         } catch (Exception e) {
             return "Erro ao consultar a Wikipedia.";
         }
+    }
+
+    private static String limitarPorFrases(String texto, int maxFrases){
+        if (texto == null || texto.isBlank()){
+            return "Resumo indisponível.";
+        }
+
+        String[] frases = texto.split("(?<=[.!?])\\s+");
+
+        StringBuilder resultado = new StringBuilder();
+
+        for (int i = 0; i < Math.min(frases.length, maxFrases); i++) {
+            resultado.append(frases[i]).append(" ");
+        }
+
+        return resultado.toString().trim();
     }
 }
