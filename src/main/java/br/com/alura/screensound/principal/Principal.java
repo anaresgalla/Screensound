@@ -74,8 +74,13 @@ public class Principal {
     private void buscarMusicasPorArtista() {
         System.out.println("Buscar músicas de que artista? ");
         var nome = leitura.nextLine();
-        List<Musica> musicas = repositorio.buscaMusicasPorArtista(nome);
-        musicas.forEach(System.out::println);
+        Optional<Artista> artista = repositorio.findByNomeContainingIgnoreCase(nome);
+        if(artista.isPresent()){
+            List<Musica> musicas = repositorio.buscaMusicasPorArtista(nome);
+            musicas.forEach(System.out::println);}
+        else {
+            System.out.println("Artista não cadastrado no banco de dados.");
+        }
     }
 
     private void listarMusicas() {
